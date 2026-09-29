@@ -1,0 +1,1 @@
+fetch('https://image.pollinations.ai/prompt/mens-jeans-on-white-background?width=500&height=500&nologo=true').then(r => console.log(r.status, r.headers.get('content-type'))).catch(e => console.error(e));

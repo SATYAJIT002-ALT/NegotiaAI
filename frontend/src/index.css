@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#0a0f0d] text-emerald-50 font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  .auth-input {
+    @apply w-full px-4 py-3 border rounded-xl outline-none transition-all;
+    @apply bg-[#0f1712] border-[#22352a] text-emerald-50;
+  }
+  
+  .auth-input::placeholder {
+    color: #6B7280;
+  }
+
+  .auth-input:focus {
+    @apply bg-white border-indigo-500 ring-2 ring-indigo-500 text-[#111827];
+  }
+  
+  .auth-input:focus::placeholder {
+    color: #6B7280;
+  }
+
+  .auth-input:-webkit-autofill,
+  .auth-input:-webkit-autofill:hover, 
+  .auth-input:-webkit-autofill:focus, 
+  .auth-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+    -webkit-text-fill-color: #111827 !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-[#0f1712]/70 backdrop-blur-md border border-emerald-500/20 shadow-xl;
+  }
+  
+  .glass-dark {
+    @apply bg-[#060a07]/80 backdrop-blur-md border border-emerald-500/30 shadow-xl;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
