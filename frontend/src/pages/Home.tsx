@@ -1,16 +1,18 @@
 import { useEffect, useState, useMemo } from 'react';
 import axios from 'axios';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ProductCard from '../components/ProductCard';
 import { motion } from 'framer-motion';
-import { Filter, SlidersHorizontal, ChevronRight, Zap, ShieldCheck, Tag } from 'lucide-react';
+import { Filter, SlidersHorizontal, ChevronRight, Zap, ShieldCheck, Tag, Search } from 'lucide-react';
+import { api } from '../api/client';
 
 export default function Home() {
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const location = useLocation();
+  const navigate = useNavigate();
   
   // Parse query parameters
   const searchParams = new URLSearchParams(location.search);
@@ -29,7 +31,7 @@ export default function Home() {
     const fetchProducts = async () => {
       setLoading(true);
       try {
-        const { data } = await axios.get('http://localhost:5000/api/products');
+        const { data } = await api.get('/products');
         setProducts(data);
       } catch (err) {
         console.error("Error fetching products", err);
